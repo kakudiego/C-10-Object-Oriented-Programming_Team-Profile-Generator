@@ -1,52 +1,35 @@
-// create the about section
-const generateAbout = (aboutText) => {
-  if (!aboutText) {
-    return '';
-  }
-
-  return `
-    <section class="my-3" id="about">
-      <h2 class="text-dark bg-primary p-2 display-inline-block">About Me</h2>
-      <p>${aboutText}</p>
-    </section>
-  `;
-};
-
-// create the projects section
+// create the employees section
 const generateProjects = (projectsArr) => {
   return `
     <section class="my-3" id="portfolio">
       <div class="flex-row justify-space-between">
+
       ${projectsArr
-        .filter(({ feature }) => feature)
-        .map(({ name, description, email, link }) => {
+        .map(({ managerName, id, email, office }) => {
+          console.log(email);
           return `
-          <div class="col-12 mb-2 bg-dark text-light p-3">
+          <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
+            <h3 class="portfolio-item-title text-light">${managerName}</h3>
+              
+            <p>Email: ${email}</p>
+            <p>Employee ID: ${id}</p>
+            <p>Office Number: ${office}</p>
+          </div>
+        `;
+        })
+        .join('')}
+      ${projectsArr
+        .map(({ name, description, email, github }) => {
+          console.log(email);
+          return `
+          <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
             <h3 class="portfolio-item-title text-light">${name}</h3>
             <h5 class="portfolio-email">
               Email:
               ${email}
             </h5>
             <p>${description}</p>
-            <a href="${link}" class="btn"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
-          </div>
-        `;
-        })
-        .join('')}
-
-      ${projectsArr
-        .filter(({ feature }) => !feature)
-        .map(({ name, description, email, link }) => {
-          console.log(email);
-          return `
-          <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
-            <h3 class="portfolio-item-title text-light">${name}</h3>
-            <h5 class="portfolio-email">
-              Built With:
-              ${email}
-            </h5>
-            <p>${description}</p>
-            <a href="${link}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
+            <p>${github}</p>
           </div>
         `;
         })
@@ -60,7 +43,7 @@ const generateProjects = (projectsArr) => {
 // export function to generate entire page
 module.exports = (templateData) => {
   // destructure page data by section
-  const { projects, about } = templateData;
+  const { employees } = templateData;
 
   return `
   <!DOCTYPE html>
@@ -85,8 +68,7 @@ module.exports = (templateData) => {
       </div>
     </header>
     <main class="container my-5">
-      ${generateAbout(about)}
-      ${generateProjects(projects)}
+      ${generateProjects(employees)}
     </main>
     <footer class="container text-center py-3">
     </footer>
