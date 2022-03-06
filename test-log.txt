@@ -1,4 +1,0 @@
-
-> c-10-object-oriented-programming_team-profile-generator@1.0.0 test
-> jest --verbose test/*
-
