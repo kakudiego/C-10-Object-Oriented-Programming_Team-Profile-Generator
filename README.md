@@ -51,3 +51,6 @@ Project in GitHub: https://github.com/kakudiego/C-10-Object-Oriented-Programming
 If you have any questions, contact me at diegokaku@gmail.com.
 
 The following images/video demonstrates the application functionality:
+
+https://user-images.githubusercontent.com/94471049/156910640-9518d04d-5e1e-4b21-bd3e-9c5e1b6bacd8.mp4
+
